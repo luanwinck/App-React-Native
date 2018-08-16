@@ -1,0 +1,22 @@
+[
+  {
+    "imagem": "https://facebook.github.io/react-native/img/favicon.png",
+    "titulo": "Sapatos",
+    "descricao": "Delicada e cheia de estilo"
+  },
+  {
+    "imagem": "https://facebook.github.io/react-native/img/favicon.png",
+    "titulo": "Bolsas",
+    "descricao": "Sabe aquele charme extra que você quer para o look"
+  },
+  {
+    "imagem": "https://facebook.github.io/react-native/img/favicon.png",
+    "titulo": "Sapatos",
+    "descricao": "Delicada e cheia de estilo"
+  },
+  {
+    "imagem": "https://facebook.github.io/react-native/img/favicon.png",
+    "titulo": "Bolsas",
+    "descricao": "Sabe aquele charme extra que você quer para o look"
+  }
+]
