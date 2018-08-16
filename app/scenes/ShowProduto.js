@@ -15,13 +15,10 @@ export default class Home extends React.Component {
 
   renderNumeracao() {
       return this.state.numeracoes.map((num, key) => {
-          return <View style={[styles.containerNumero,
-                    this.state.numeracaoMarcada === num ? styles.numeracaoMarcada : null
-                    ]} key={key}
+          const style = this.state.numeracaoMarcada === num ? styles.numeracaoMarcada : null;
+          return <View style={[styles.containerNumero, style]} key={key}
                     onTouchStart={() => this.setState({numeracaoMarcada: num})}>
-                    <Text style={[styles.text,
-                    this.state.numeracaoMarcada === num ? styles.numeracaoMarcada : null
-                    ]}>{num}</Text>
+                    <Text style={[styles.text, style]}>{num}</Text>
                 </View>
       })
   }
@@ -29,12 +26,14 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Link to="/">
-                <Text>Voltar</Text>
-        </Link>
-        <Text style={[styles.text, styles.title]}>
-          AREZZO
-        </Text>
+        <View style={styles.container}>
+            <Link to="/">
+                    <Text>Voltar</Text>
+            </Link>
+            <Text style={[styles.text, styles.title]}>
+            AREZZO
+            </Text>
+        </View>
         <Image
             source={{
                 uri: 'https://img.lojasrenner.com.br/item/542390672/medium/1.jpg',
@@ -54,7 +53,11 @@ export default class Home extends React.Component {
         </Text> 
         <View style={styles.containerNumeracao}>
             {this.renderNumeracao()}
-        </View>       
+        </View>  
+        <Text style={[styles.text, styles.textLink]}>Guia de tamanhos</Text>
+        <View style={styles.footer}>
+
+        </View>
       </View>
     );
   }
@@ -63,7 +66,6 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
     container: {
       backgroundColor: '#F5FCFF',
-      padding: 10
     },
     title: {
       fontSize: 42,
@@ -71,8 +73,8 @@ const styles = StyleSheet.create({
       marginTop: -40,
     },
     image: {
-        width: 300, 
-        height: 300,
+        width: 250, 
+        height: 250,
         marginLeft: 50,
     },
     text: {
@@ -90,22 +92,33 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20
     },
+    textLink: {
+        textDecorationLine: 'underline',
+        marginTop: 20
+    },
     containerNumeracao: {
         flexDirection: 'row',
         justifyContent: 'center',
         marginTop: 10,
     },
     containerNumero: {
-        width: 25,
-        height: 25,
+        width: 28,
+        height: 28,
         alignItems: 'center',
+        justifyContent: 'center',
         borderWidth: 1,
         borderColor: 'black',
-        margin: 5
+        margin: 2
     },
     numeracaoMarcada: {
         backgroundColor: 'black',
         color: 'white'
+    },
+    footer: {
+        backgroundColor: 'black',
+        height: 100,
+        position: 'absolute',
+        bottom: 0
     }
   });
 
