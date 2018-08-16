@@ -9,7 +9,9 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import { NativeRouter as Router, Route, Link, Redirect, Switch } from 'react-router-native'
+
 import Home from './scenes/Home'
+import ShowProduto from './scenes/ShowProduto'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -25,9 +27,10 @@ export default class App extends Component<Props> {
       <Router>
         <View> 
           <Switch>
-            <Route path="/" component={Home} />
+            <Route path="/" component={ShowProduto} />
+            <Route path="/produto" component={ShowProduto} />
 
-            <Redirect to="/" />
+            <Redirect to="/produto" />
           </Switch>
         </View>
       </Router>
