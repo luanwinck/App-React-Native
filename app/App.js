@@ -6,6 +6,7 @@
  * @flow
  */
 
+
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import {
@@ -17,6 +18,7 @@ import {
 } from "react-router-native";
 import Home from "./scenes/Home";
 import InitialPage from "./scenes/InitialPage";
+import ShowProduto from './scenes/ShowProduto'
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -33,7 +35,9 @@ export default class App extends Component {
           <Switch>
             <Route path="/" component={InitialPage} />
             <Route path="/initialPage" component={InitialPage} />
-            <Redirect to="/" />
+            <Route path="/produto" component={ShowProduto} />
+
+            <Redirect to="/produto" />
           </Switch>
         </View>
       </Router>

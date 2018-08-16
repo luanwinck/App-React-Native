@@ -16,6 +16,7 @@ export default class Home extends React.Component {
         </Link>
         <Link to="/initialPage">
           <Text>Tela inicial Nova</Text>
+
         </Link>
       </View>
     );
