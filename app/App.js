@@ -16,9 +16,9 @@ import {
   Redirect,
   Switch
 } from "react-router-native";
-import Home from "./scenes/Home";
-import InitialPage from "./scenes/InitialPage";
-import ShowProduto from './scenes/ShowProduto'
+import Home from "./scenes/Home/index";
+import InitialPage from "./scenes/InitialPage/index";
+import ShowProduto from './scenes/ShowProduto/index'
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",

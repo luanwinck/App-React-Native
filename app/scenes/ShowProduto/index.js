@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Link } from 'react-router-native'
 
-import Numeracao from '../component/Numeracao'
+import styles from './style'
+
+import Numeracao from '../../component/Numeracao/Numeracao'
 
 export default class Home extends React.Component {
 
@@ -11,7 +13,7 @@ export default class Home extends React.Component {
     this.state = {
         text: '',
         numeracoes: [33,34,35,36,37,38,39,40],
-        numeracaoMarcada: [33, 34]
+        numeracaoMarcada: []
     };
     
     this._selectNumeracao = this._selectNumeracao.bind(this)
@@ -20,10 +22,10 @@ export default class Home extends React.Component {
   _selectNumeracao(num) {
     let numeracaoMarcada = this.state.numeracaoMarcada
     if (numeracaoMarcada.includes(num)) {
-            numeracaoMarcada.pop(num)
+        numeracaoMarcada.shift(num)
     }
     else {
-            numeracaoMarcada.push(num)
+        numeracaoMarcada.push(num)
     }
     this.setState({
         numeracaoMarcada
@@ -33,11 +35,12 @@ export default class Home extends React.Component {
   renderNumeracao() {
       return this.state.numeracoes.map((num, key) => {
           const style = this.state.numeracaoMarcada.includes(num) ? styles.numeracaoMarcada : null;
-          return <Numeracao num={num} 
+          return <Numeracao key={key}
+                            num={num} 
                             styleView={[styles.containerNumero, style]} 
                             styleText={[styles.text, style]} 
                             selectNumeracao={this._selectNumeracao} 
-                            key={key}/>
+                            />
       })
   }
 
@@ -72,70 +75,11 @@ export default class Home extends React.Component {
         </View>  
         <Text style={[styles.text, styles.textLink]}>Guia de tamanhos</Text>
         <View style={styles.footer}>
-
+            
         </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      backgroundColor: '#F5FCFF',
-    },
-    title: {
-      fontSize: 42,
-      padding: 10,
-      marginTop: -40,
-    },
-    image: {
-        width: 250, 
-        height: 250,
-        marginLeft: 50,
-    },
-    text: {
-        textAlign: 'center',
-        color: 'black'
-    },
-    textNome: {
-        marginTop: 10,
-        marginBottom: 10
-    },
-    textBold: {
-        fontWeight: 'bold',
-    },
-    textPreco: {
-        fontWeight: 'bold',
-        fontSize: 20
-    },
-    textLink: {
-        textDecorationLine: 'underline',
-        marginTop: 20
-    },
-    containerNumeracao: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 10,
-    },
-    containerNumero: {
-        width: 28,
-        height: 28,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: 'black',
-        margin: 2
-    },
-    numeracaoMarcada: {
-        backgroundColor: 'black',
-        color: 'white'
-    },
-    footer: {
-        backgroundColor: 'black',
-        height: 100,
-        position: 'absolute',
-        bottom: 0
-    }
-  });
 
 

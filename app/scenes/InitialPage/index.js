@@ -8,8 +8,8 @@ import {
   ScrollView,
   FlatList
 } from "react-native";
-import produtos from "../scripts/produtosHome.json";
-export default class InitialPage extends React.Component {
+import produtos from "../../scripts/produtosHome.json";
+export default class IntialPage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -43,7 +43,7 @@ export default class InitialPage extends React.Component {
         <View style={styles.container}>
           <ToolbarAndroid
             style={styles.toolbar}
-            logo={require("../images/logo.jpg")}
+            logo={require("../../images/logo.jpg")}
             title="AwesomeApp"
           />
           {this._renderProdutosParaHome()}
