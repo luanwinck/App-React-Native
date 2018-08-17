@@ -33,7 +33,7 @@ export default class App extends Component {
       <Router>
         <View>
           <Switch>
-            <Route path="/" component={InitialPage} />
+            <Route path="/" component={ShowProduto} />
             <Route path="/initialPage" component={InitialPage} />
             <Route path="/produto" component={ShowProduto} />
 

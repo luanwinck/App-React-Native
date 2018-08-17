@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Link } from 'react-router-native'
 
+import Numeracao from '../component/Numeracao'
+
 export default class Home extends React.Component {
 
   constructor(props) {
@@ -9,31 +11,45 @@ export default class Home extends React.Component {
     this.state = {
         text: '',
         numeracoes: [33,34,35,36,37,38,39,40],
-        numeracaoMarcada: 33
+        numeracaoMarcada: [33, 34]
     };
+    
+    this._selectNumeracao = this._selectNumeracao.bind(this)
+  }
+
+  _selectNumeracao(num) {
+    let numeracaoMarcada = this.state.numeracaoMarcada
+    if (numeracaoMarcada.includes(num)) {
+            numeracaoMarcada.pop(num)
+    }
+    else {
+            numeracaoMarcada.push(num)
+    }
+    this.setState({
+        numeracaoMarcada
+    })
   }
 
   renderNumeracao() {
       return this.state.numeracoes.map((num, key) => {
-          const style = this.state.numeracaoMarcada === num ? styles.numeracaoMarcada : null;
-          return <View style={[styles.containerNumero, style]} key={key}
-                    onTouchStart={() => this.setState({numeracaoMarcada: num})}>
-                    <Text style={[styles.text, style]}>{num}</Text>
-                </View>
+          const style = this.state.numeracaoMarcada.includes(num) ? styles.numeracaoMarcada : null;
+          return <Numeracao num={num} 
+                            styleView={[styles.containerNumero, style]} 
+                            styleText={[styles.text, style]} 
+                            selectNumeracao={this._selectNumeracao} 
+                            key={key}/>
       })
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.container}>
-            <Link to="/">
-                    <Text>Voltar</Text>
-            </Link>
-            <Text style={[styles.text, styles.title]}>
+        <Link to="/">
+                <Text>Voltar</Text>
+        </Link>
+        <Text style={[styles.text, styles.title]}>
             AREZZO
-            </Text>
-        </View>
+        </Text>
         <Image
             source={{
                 uri: 'https://img.lojasrenner.com.br/item/542390672/medium/1.jpg',
